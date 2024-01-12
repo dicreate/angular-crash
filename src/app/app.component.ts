@@ -6,6 +6,7 @@ import {IProduct} from "./models/product";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductsServices} from "./services/products.services";
 import {OnInit} from "@angular/core";
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -19,14 +20,21 @@ import {OnInit} from "@angular/core";
 export class AppComponent implements OnInit {
   title = 'angular-crash-course';
 
-  products: IProduct[] = []
+  /* products: IProduct[] = [] */
+  loading = false;
+  products$: Observable<IProduct[]>
 
   constructor(private productsService: ProductsServices) {
   }
 
   ngOnInit():void {
-    this.productsService.getAll().subscribe(products => {
+    this.loading = true;
+    this.products$ = this.productsService.getAll().pipe(
+      tap(() => this.loading = false)
+    )
+   /*  this.productsService.getAll().subscribe(products => {
       this.products = products
-    })
+      this.loading = false
+    }) */
   }
 }
