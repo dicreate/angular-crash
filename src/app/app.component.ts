@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {ProductComponent} from "./components/product/product.component";
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 import {IProduct} from "./models/product";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductsServices} from "./services/products.services";
@@ -11,7 +12,7 @@ import { Observable, tap } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProductComponent, HttpClientModule],
+  imports: [CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [ProductsServices]
