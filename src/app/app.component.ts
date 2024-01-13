@@ -8,11 +8,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {ProductsServices} from "./services/products.services";
 import {OnInit} from "@angular/core";
 import { Observable, tap } from 'rxjs';
+import {FormsModule} from "@angular/forms";
+import {FilterProductsPipe} from "./pipes/filter-products.pipe";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent],
+  imports: [CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent, FormsModule, FilterProductsPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [ProductsServices]
@@ -20,7 +22,7 @@ import { Observable, tap } from 'rxjs';
 
 export class AppComponent implements OnInit {
   title = 'angular-crash-course';
-
+  term = '';
   /* products: IProduct[] = [] */
   loading = false;
   products$: Observable<IProduct[]>
