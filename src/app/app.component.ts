@@ -10,11 +10,13 @@ import {OnInit} from "@angular/core";
 import { Observable, tap } from 'rxjs';
 import {FormsModule} from "@angular/forms";
 import {FilterProductsPipe} from "./pipes/filter-products.pipe";
+import {ModalComponent} from "./components/modal/modal.component";
+import {CreateProductsComponent} from "./components/create-products/create-products.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent, FormsModule, FilterProductsPipe],
+  imports: [CreateProductsComponent, CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent, FormsModule, FilterProductsPipe, ModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [ProductsServices]
