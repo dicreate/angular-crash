@@ -23,26 +23,6 @@ import {ModalService} from "./services/modal.service";
   providers: [ProductsServices]
 })
 
-export class AppComponent implements OnInit {
-  title = 'angular-crash-course';
-  term = '';
-  /* products: IProduct[] = [] */
-  loading = false;
-  // products$: Observable<IProduct[]>
+export class AppComponent {
 
-  constructor(
-    public productsService: ProductsServices,
-    public modalService: ModalService
-    ) {
-  }
-
-  ngOnInit():void {
-    // this.loading = true;
-    // this.products$ = this.productsService.getAll().pipe(
-    //   tap(() => this.loading = false)
-    // )
-   this.productsService.getAll().subscribe(products => {
-      this.loading = false
-    })
-  }
 }
