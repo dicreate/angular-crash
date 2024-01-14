@@ -3,21 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {ProductComponent} from "./components/product/product.component";
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
-import {IProduct} from "./models/product";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductsServices} from "./services/products.services";
-import {OnInit} from "@angular/core";
-import { Observable, tap } from 'rxjs';
-import {FormsModule} from "@angular/forms";
-import {FilterProductsPipe} from "./pipes/filter-products.pipe";
-import {ModalComponent} from "./components/modal/modal.component";
 import {CreateProductsComponent} from "./components/create-products/create-products.component";
-import {ModalService} from "./services/modal.service";
+import {NavigationComponent} from "./components/navigation/navigation.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CreateProductsComponent, CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent, FormsModule, FilterProductsPipe, ModalComponent],
+  imports: [CreateProductsComponent, CommonModule, RouterOutlet, ProductComponent, HttpClientModule, GlobalErrorComponent, NavigationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [ProductsServices]
