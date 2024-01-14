@@ -3,7 +3,7 @@ export interface IProduct {
   price: number;
   rating: { rate: number; count: number };
   description: string;
-  id: number;
+  id?: number;
   title: string;
   category: string
 }

@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {FilterProductsPipe} from "./pipes/filter-products.pipe";
 import {ModalComponent} from "./components/modal/modal.component";
 import {CreateProductsComponent} from "./components/create-products/create-products.component";
+import {ModalService} from "./services/modal.service";
 
 @Component({
   selector: 'app-root',
@@ -27,19 +28,21 @@ export class AppComponent implements OnInit {
   term = '';
   /* products: IProduct[] = [] */
   loading = false;
-  products$: Observable<IProduct[]>
+  // products$: Observable<IProduct[]>
 
-  constructor(private productsService: ProductsServices) {
+  constructor(
+    public productsService: ProductsServices,
+    public modalService: ModalService
+    ) {
   }
 
   ngOnInit():void {
-    this.loading = true;
-    this.products$ = this.productsService.getAll().pipe(
-      tap(() => this.loading = false)
-    )
-   /*  this.productsService.getAll().subscribe(products => {
-      this.products = products
+    // this.loading = true;
+    // this.products$ = this.productsService.getAll().pipe(
+    //   tap(() => this.loading = false)
+    // )
+   this.productsService.getAll().subscribe(products => {
       this.loading = false
-    }) */
+    })
   }
 }
